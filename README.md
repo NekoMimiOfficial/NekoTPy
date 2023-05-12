@@ -1,8 +1,8 @@
 # NekoMimi Telegram Python Module
 ```
- ^ ^   NekoTPy API wrapper
-=UwU=  This software is distributed without warranty
- w w   NekoMimi (c) 2023
+ ^ ^   NekoTPy API wrapper           (Glameow used wrap!)
+=UwU=  This software is distributed without any warranty.
+ w w   NekoMimi (c) 2023 in collab with The NekOS Project
 ```
 
 isn't it time to create a Telegram API wrapper that is a bit easier to write?  
@@ -73,6 +73,30 @@ botv3 list
 ( ) yet again even a cleaner GUID system
 
 things should start to look cleaner in this version
+```
+
+# botv2 example
+```python
+from NekoTPy import v2
+
+Bot = v2.Bot(TOKEN)
+
+@Bot.Command
+def _ping(ctx):
+    ctx.send("pong", mention=True)
+
+Bot.run()
+```
+wait.. THAT'S IT?! THAT'S TINY!  
+yes! NekoTPy's syntax is amazingly compact so creating and running a bot instance can be done in only 2 lines  
+I like to also add a `Bot.stop()` in a `while input() == "stop"` loop or after an `input()` since the event listener is a different process than your main code process that way you can do things while your bot is running like for example running a stat monitor using botv1 features or making a simple bot shell which is what I did  
+so you can add this code to the end of the file and expand on what you want it to do  
+```python
+com = input(">")
+while not com.startswith("quit"):
+    pass #write your simple shell here
+    com = input(">")
+Bot.stop()
 ```
 
 # Contact info
