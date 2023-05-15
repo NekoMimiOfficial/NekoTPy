@@ -159,8 +159,6 @@ class Bot:
                 param = {str(self.user_id) : func}
                 self.pself.wait_queue.update(param)
 
-            def got_response(self):
-                self.pself.wait_queue.update({})
 
         ctx = context(self, upd)
         
@@ -239,6 +237,7 @@ class Bot:
                         uid = upd["update_id"]
                         if int(uid) > self.guid:
                             self.guid = int(uid)
+                            #self.gwid = int(uid)
                             self._guid_update()
                             if "text" in upd["message"]:
                                 text = upd["message"]["text"]
@@ -247,7 +246,9 @@ class Bot:
                                     __user_id = upd["message"]["from"]["id"]
                                     __user_id = str(__user_id)
                                     if __user_id in self.wait_queue:
-                                        self.wait_queue[__user_id](text_old)
+                                        if int(uid) > self.gwid:
+                                            self.wait_queue[__user_id](text_old)
+                                            self.gwid = int(uid)
                                 else:
                                     text = text.split("/", 1)[1]
                                     text = text.split(" ", 1)[0]
