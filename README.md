@@ -43,13 +43,13 @@ botv2 list
 (x) ctx get file
 (x) ctx sendPhoto
 (x) ctx keyboard markup
-( ) ctx wait for response: 60% [help]
+( ) ctx wait for response: 99% [testing required]
 (x) command queue
-( ) wait queue: 20% [help]
+( ) wait queue: 99% [testing required]
 (x) global event listener
-( ) event parser: 70% [add other types of events]
+(D) event parser: 70% [add other types of events] [dropped for v3]
 (x) updater
-( ) for once finally fix the GUID: 0%
+( ) for once finally fix the GUID: 99% [testing required]
 
 once again I'm not proud of this but it's another improvement
 ```
