@@ -1,12 +1,12 @@
 import setuptools
-import NekoTPy
+#import NekoTPy
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="NekoTPy",
-    version=NekoTPy.__version__,
+    version="1.0.1",
     author="NekoMimi",
     author_email="nekomimi@tilde.team",
     description="Telegram API wrapper written in python with command wrapper and context style commands",
