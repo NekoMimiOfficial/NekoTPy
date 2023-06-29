@@ -22,7 +22,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     package_dir={"./": "NekoTPy/"},
-    install_requires = ['requsts'],
+    install_requires = ['requests'],
     packages=setuptools.find_packages(),
     python_requires=">=3.6",
 )
