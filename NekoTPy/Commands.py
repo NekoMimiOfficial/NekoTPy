@@ -1,4 +1,4 @@
-__version__ = "1.0.1"
+import os
 
 """
      ^ ^    NekoTPy telegram bot API wrapper         v Bliss(A)
