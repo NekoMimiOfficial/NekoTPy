@@ -107,4 +107,6 @@ def _nhc_parser(file:str):
 
     return _guid, _giid
 
-
+class Bot:
+    def __init__(self) -> None:
+        return None
