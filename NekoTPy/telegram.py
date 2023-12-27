@@ -1,112 +1,79 @@
-import os
-import requests
-import json
-import asyncio
-from NekoTPy import Commands
+from tg_types import context
+import processes
 
-"""
-     ^ ^    NekoTPy telegram bot API wrapper         v Bliss(A)
-    =UwU=   this software is distributed as is without warranty
-     w w    developed by @NekoMimiOfficial 2023(c) NekoLabs LTD
+__internal_errors = []
+__TG_BOT_API = "https://api.telegram.org/"
 
-     NekoTPy is a telegram bot API wrapper which is async ready
-     and feature rich to write bots in a more elegant and simple
-     style minimizing keystrokes
 
-     this library takes inspiration of the discord.py syntax
-     if you are used to it then you'll be at home since its
-     almost a 1to1 syntax (minus that it's telegram)
-
-     for more info and guides, please refer to the docs at:
-     <DOCS_PLACEHOLDER>
-"""
-
-__ntpy_error_list = []
-
-def write(data:str, file:str) -> int:
-    """
-    a write function to be used internally
-    however as the naming convention implies
-    it may be used by the user if they wish
-
-    write(data, file)
-    accepts 2 positional arguments of type str
-    data: the data needed to be written (str)
-    file: the file to write to (str)
-
-    yields an int:
-    0 on success
-    1 on failure
-
-    errors get appended to __ntpy_error_list
-    """
-    
+def write(data: str, file: str):
     try:
-        buffer = open(file,'w')
+        buffer = open(file, 'w')
         buffer.write(data)
         buffer.close()
-        return 0
     except Exception as e:
-        __ntpy_error_list.append(f"Write error@{file}: {e}")
-        return 1
+        __internal_errors.append(e)
+        print(str(e))
 
-def read(file:str) -> str:
-    """
-    a read function to be used internally
-    however as the naming convention implies
-    it may be used by the user if they wish
 
-    read(file)
-    accepts 1 positional argument of type str
-    file: the file to write to (str)
-
-    yields str data:
-    expected file contents on success
-    expected 'Read error!' on failure
-
-    errors get appended to __ntpy_error_list
-    """
-    
+def read(file: str):
     try:
         buffer = open(file, 'r')
-        contents = buffer.read()
+        data = buffer.read()
         buffer.close()
-        return contents
     except Exception as e:
-        __ntpy_error_list.append(f"Read error@{file}: {e}")
-        return "Read error!"
+        __internal_errors.append(e)
+        print(str(e))
+        data = ""
 
-def _nhc_parser(file:str):
-    """
-    to be only used by the ntpy library
-    an argument parser for .nhc files known as Neko Hybrid Config files
+    return data
 
-    nhc file structure:
 
-    ARG1=UwU=ARG2...
-    in this case ntpy's nhc file only contains 2 args
-    """
-    data = read(file)
-    data = data.split("=UwU=", 1)
-    if len(data) != 2:
-        __ntpy_error_list.append(f"Error reading nhc file:{file} check format")
-        return 0, 0
+class Command:
+    def __init__(self, token):
+        self.token = token
+        self.base = f"{__TG_BOT_API}bot{self.token}/"
+        self.file_base = f"{__TG_BOT_API}file/bot{self.token}/"
+        self.offset = f"?offset={self.getOffset()}"
+        self.queue = []
 
-    #messages in telegram have an update ID
-    #basically each UID is always bigger than the previous pne 
-    #and can be used to track the order of messages
+    def getOffset(self):
+        pass
 
-    #guid is the global UID or what the app has stored
-    #so if it crashes or restarts it remembers the last message
-    _guid = data[0]
+    def setOffset(self):
+        pass
 
-    #this is a new feature, an interaction ID
-    #copies the same principle of the GUID however its
-    #only advanced once an interaction has occured
-    _giid = data[1]
+    def connectCable(self, operation, data):
+        if operation == 'send':
+            self.queue.append({'type':'send', 'contents':data})
+        elif operation == 'get':
+            self.queue.append({'type':'get', 'contents':data})
 
-    return _guid, _giid
+    def createContext(self, update):
+        ctx = context.Context(self)
+        
+        if "message" in update:
+            if "text" in update["message"]:
+                for arg in update["message"]["text"].split(" "):
+                    if not arg.startswith("/"):
+                        ctx.Args.append(arg)
+            elif "caption" in update["message"]:
+                for arg in update["message"]["caption"].split(" "):
+                    if not arg.startswith("/"):
+                        ctx.Args.append(arg)
 
-class Bot:
-    def __init__(self) -> None:
-        return None
+            if "from" in update["message"]:
+                ctx.UserID = int(update["message"]["from"]["id"])
+                if "username" in update["message"]["from"]:
+                    ctx.UserName = update["message"]["from"]["username"]
+                if "first_name" in update["message"]["from"]:
+                    ctx.DetailedUserName.append(update["message"]["from"]["first_name"])
+            
+            ctx.MessageID = int(update["message"]["message_id"])
+            ctx.UpdateID = int(update["update_id"])
+
+            if "chat" in update["message"]:
+                ctx.ChatID = int(update["message"]["chat"]["id"])
+                if "title" in update["message"]["chat"]:
+                    ctx.ChatName = update["message"]["chat"]["title"]
+
+        return ctx
