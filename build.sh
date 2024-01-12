@@ -2,7 +2,6 @@
 
 rm ./dist/Neko*
 rm ./setup.py
-rm ./NekoTPy/__init__.py
 pip3 uninstall NekoTPy -y
 
 python3 buildInit.py

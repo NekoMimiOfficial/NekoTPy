@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setuptools.setup(
     name="NekoTPy",
     version=_ver,
-    author="NekoMimi",
+    author="NekoMimiOfficial",
     author_email="nekomimi@tilde.team",
     description="Telegram API wrapper written in python with command wrapper and context style commands",
     long_description=long_description,
@@ -23,7 +23,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     package_dir={"./": "NekoTPy/"},
-    install_requires = ['requests'],
+    install_requires = ['requests', 'aiohttp', 'websockets'],
     packages=setuptools.find_packages(),
-    python_requires=">=3.6",
+    python_requires=">=3.11",
 )

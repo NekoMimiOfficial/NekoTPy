@@ -1,21 +1,16 @@
-from NekoMimi import tools as nm
+from NekoMimi import utils as nm
+import os
 
-_ver = nm.read("./version.txt").split("\n")[0]
+_ver = nm.read("./version.txt").split("\n")[0].strip()
 
 _st = nm.read("./setuptemplate.py")
 _st = _st.replace("<PLACEHOLDER>", _ver)
 
 nm.write(_st, "./setup.py")
 
-v_line = f"__version__ = '{_ver}'"
-description = """
-\"\"\"
-Version of the NekoTPy module
-more info in the telegram sub-module
-\"\"\"
-"""
+contents = nm.read("./NekoTPy/__init__.py").replace("XXXXX", _ver)
 
-contents = f"{v_line}{description}" 
+os.remove("./NekoTPy/__init__.py")
 
 nm.write(contents, "./NekoTPy/__init__.py")
 print(f"Built build process files v{_ver}")
