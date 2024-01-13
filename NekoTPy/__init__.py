@@ -7,11 +7,20 @@ A basic wrapper for the Telegram bot API.
 :license: Apache2, see LICENSE for more details
 """
 
-__title__ = 'telegram'
-__version__ = "1.1.0"
+##[Bob args]######################
+__title__ = 'NekoTPy'
 __author__ = "NekoMimiOffical"
+__author_email__ = "nekomimi@tilde.team"
+__description__ = "User-friendly and async ready Telegram bot wrapper inspired by discord.py"
 __repository__ = "https://github.com/NekoMimiOffical/NekoTPy"
+__bug_tracker__ = "https://github.com/NekoMimiOffical/NekoTPy/issues"
 __license__ = "Apache2"
+__pyver__ = ">=3.11"
+__target__ = "OS Independent"
+__requirements__ = ['aiohttp']
+##################################
+
+__version__ = '1.1.0'
 __build__ = 0x04000A
 
 """

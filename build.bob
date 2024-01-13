@@ -1,0 +1,9 @@
+$src <./NekoTPy/>
+$test <./tests/>
+
+@buildType <PyModule>
+@buildSrc <$src>
+@testSrc <$test>
+
+@BUILD
+@TEST

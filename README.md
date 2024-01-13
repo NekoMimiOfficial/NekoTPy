@@ -18,12 +18,11 @@ docs are available [here](https://github.com/NekoMimiOfficial/NekoTPy/blob/main/
 
 # ToDo and Progress
 -> current progress: Asyncio port  
-
 * list found at [ToDo](https://github.com/NekoMimiOfficial/NekoTPy/blob/main/TODO.md) 
 
 # botv2 example
 ```python
-from NekoTPy import v2
+from NekoTPy.legacy import v2
 
 Bot = v2.Bot(TOKEN)
 
