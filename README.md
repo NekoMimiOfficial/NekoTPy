@@ -18,31 +18,8 @@ docs are available [here](https://github.com/NekoMimiOfficial/NekoTPy/blob/main/
 
 # ToDo and Progress
 -> current progress: Asyncio port  
-```
-[ ] setup dispatcher:  
-    [ ] on_ready  
-    [ ] on_connect  
-    [ ] on_message  
-    [ ] on_message_:  
-        [ ] delete  
-        [ ] edit  
-    [ ] user_:
-        [ ] join  
-        [ ] leave  
-[ ] bot class  
-[ ] aiohttp handler  
-[ ] websocket connection  
-[ ] types:  
-    [ ] user  
-    [ ] group  
-    [ ] channel
-    [ ] message  
-    [ ] edited message 
-    [ ] channel post  
-[ ] file support  
-[ ] audio support  
-[ ] emoji list  
-```
+
+* list found at [ToDo](https://github.com/NekoMimiOfficial/NekoTPy/blob/main/TODO.md) 
 
 # botv2 example
 ```python
