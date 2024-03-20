@@ -3,7 +3,7 @@ $test <./tests/>
 
 @buildType <PyModule>
 @buildSrc <$src>
-@testSrc <$test>
+ @testSrc <$test>
 
 @BUILD
-@TEST
+ @TEST
