@@ -27,3 +27,13 @@ class Bot:
         self.max_polls = kwargs.get('max-msgs', 100)
         self.update_id = kwargs.get('uid', 0)
 
+    async def clientConnect(self, token):
+        async with self.router.ws(self.API+'bot'+token) as eventLoop:
+            while True:
+                """oh no"""
+                self.dispatcher.screen(eventLoop)
+                """oh no no no no no"""
+
+    async def run(self, token):
+        pass
+

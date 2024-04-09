@@ -13,3 +13,11 @@ class ConnectionRouter:
         async with self.session as session:
             async with session.post(uri, data=headers) as response:
                 await response.text()
+
+    async def ws(self, url):
+        """Please consult the knowledge of Jeeves
+        as i dont think a ws session will/should
+        end after a single event passes through"""
+        async with self.session as session:
+            async with session.ws_connect(url) as event:
+                await event()
