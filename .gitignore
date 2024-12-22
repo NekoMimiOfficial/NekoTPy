@@ -1,6 +1,8 @@
-./dist/
-./__pycache__/
-*.pyc
-*.log
-*.buildinfo
-./NekoTPy.egg-info/
+dist
+__pycache__
+.pyc
+.log
+.buildinfo
+NekoTPy.egg-info
+build
+.mypy_cache
