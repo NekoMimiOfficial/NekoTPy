@@ -1,0 +1,16 @@
+LICENSE
+README.md
+NekoTPy/__init__.py
+NekoTPy/__main__.py
+NekoTPy/bot.py
+NekoTPy/cables.py
+NekoTPy/dispatcher.py
+NekoTPy/parser.py
+NekoTPy.egg-info/PKG-INFO
+NekoTPy.egg-info/SOURCES.txt
+NekoTPy.egg-info/dependency_links.txt
+NekoTPy.egg-info/requires.txt
+NekoTPy.egg-info/top_level.txt
+NekoTPy/legacy/__init__.py
+NekoTPy/legacy/v1.py
+NekoTPy/legacy/v2.py

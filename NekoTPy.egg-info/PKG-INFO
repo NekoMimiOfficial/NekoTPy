@@ -1,3 +1,19 @@
+Metadata-Version: 2.1
+Name: NekoTPy
+Version: 1.1.0
+Summary: User-friendly and async ready Telegram bot wrapper inspired by discord.py
+Home-page: https://github.com/NekoMimiOffical/NekoTPy
+Author: NekoMimiOffical
+Author-email: nekomimi@tilde.team
+Project-URL: Bug Tracker, https://github.com/NekoMimiOffical/NekoTPy/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache2
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: aiohttp
+
 # NekoMimi Telegram Python Module
 ```
  ^ ^   NekoTPy API wrapper         (Glameow used wrap!)
